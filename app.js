@@ -26,7 +26,7 @@ if (navigator.geolocation) { //Geolocation API compatibility test
 } else {
     alert('Geolocation is required to run this website, Sorry.');
 }
-successFunction = position => { //function to save coordinate values
+function successFunction(position){ //function to save coordinate values
     
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
@@ -39,6 +39,7 @@ fetch(`api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${ap
     .then(data =>{
         const {weather,main,wind,clouds,sys,name, dt} = data; //save values from promise to be used
         var timeOfDay;
+        console.log(weather,main,wind,clouds,sys,name, dt);
 
         cityName.innerHTML = name;
         weatherType.innerHTML= weather.description;
