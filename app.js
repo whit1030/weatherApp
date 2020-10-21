@@ -34,7 +34,7 @@ if (navigator.geolocation) { //Geolocation API compatibility test
 
 
 const apiKey = "df7374ae099bb5c3225c10b111a545af"
-fetch(`api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`) //Weather API call
+fetch(`api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`) //Weather API call
     .then(response => response.json())
     .then(data =>{
         const {weather,main,wind,clouds,sys,name, dt} = data; //save values from promise to be used
