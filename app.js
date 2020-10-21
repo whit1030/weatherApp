@@ -34,7 +34,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&ap
         console.log(weather,main,wind,clouds,sys,name, dt);
 
         cityName.innerHTML = `${name}`;
-        weatherType.innerHTML= `${weather.description}`;
+        weatherType.innerHTML= `${weather[0].description}`;
         weatherTemperature.innerHTML = `${main.temp}`;
         weatherFeelTemperature.innerHTML = `${main.feels_like}`;
 
