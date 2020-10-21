@@ -19,19 +19,19 @@ var rainOrsnow ; // none rain snow ||
 var isClear = false; //true false || Statement for cloud generator animation
 var velocity;
 
-
+successFunction = position => { //function to save coordinate values
+    
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
+    console.log(`latitude =${lat} longitude = ${long}`)
+}
 
 if (navigator.geolocation) { //Geolocation API compatibility test
     navigator.geolocation.getCurrentPosition(successFunction);
 } else {
     alert('Geolocation is required to run this website, Sorry.');
 }
-function successFunction(position){ //function to save coordinate values
-    
-    var lat = position.coords.latitude;
-    var long = position.coords.longitude;
-    console.log(`latitude =${lat} longitude = ${long}`)
-}
+
 
 const apiKey = "df7374ae099bb5c3225c10b111a545af"
 fetch(`api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`) //Weather API call
@@ -39,7 +39,7 @@ fetch(`api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${ap
     .then(data =>{
         const {weather,main,wind,clouds,sys,name, dt} = data; //save values from promise to be used
         var timeOfDay;
-        console.log(weather,main,wind,clouds,sys,name, dt);
+        console.log(weather,main,wind,clouds,sys,name, dt)
 
         cityName.innerHTML = name;
         weatherType.innerHTML= weather.description;
