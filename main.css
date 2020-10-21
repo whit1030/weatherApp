@@ -1,0 +1,34 @@
+:root{
+ --backgroundColor : #007fb4;
+}
+
+
+#background-div{
+    background-color: aquamarine;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    margin: 0;
+
+}
+body{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+#city-type{
+    height: 100%;
+    max-width: 100%;
+    border: 1px solid red;
+    margin: 0;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-image: url(./resources/Clear.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+}
+
+
