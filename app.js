@@ -33,10 +33,10 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&ap
         var timeOfDay;
         console.log(weather,main,wind,clouds,sys,name, dt);
 
-        cityName.innerHTML = name;
-        weatherType.innerHTML= weather.description;
-        weatherTemperature.innerHTML = main.temp;
-        weatherFeelTemperature.innerHTML = main.feels_like;
+        cityName.innerText = name;
+        weatherType.innerText= weather.description;
+        weatherTemperature.innerText = main.temp;
+        weatherFeelTemperature.innerText = main.feels_like;
 
         //If statements to get the major background colour and city types
         if (((dt>=(sys.sunrise - 3600)) && (dt < sys.sunrise))||((dt>sys.sunset) && (dt <= (sys.sunset+3600)))){ //if dawn/dusk
