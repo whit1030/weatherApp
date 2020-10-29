@@ -1,6 +1,8 @@
 :root{
  --backgroundColor : #007fb4;
  --cityImage : url(./resources/Clear.svg);
+ font-family: 'Anton', sans-serif;
+
 }
 
 
