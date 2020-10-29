@@ -44,67 +44,53 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&ap
             root.style.setProperty("--backgroundColor",`${backgroundColors.dusk}`);
             root.style.setProperty("--overlayColor",`${overlayColors.dusk}`);
             root.style.setProperty("--cityImage",`url(./resources/${cityImages.night})`);
+            console.log('dusk')
             
         }else if (((dt<=(sys.sunrise + 3600)) && (dt > sys.sunrise))||((dt<sys.sunset) && (dt >= (sys.sunset-3600)))){ //if sunset/sunrise code
 
             root.style.setProperty("--backgroundColor",`${backgroundColors.sunsetSunrise}`);
             root.style.setProperty("--overlayColor",`${overlayColors.sunsetSunrise}`);
             root.style.setProperty("--cityImage",`url(./resources/${cityImages.day})`);
+            console.log('sunset')
 
-        }else if(dt>sys.sunrise+3600){ //day code
+        }else if((dt>sys.sunrise+3600) && (dt<sys.sunset-3600)){ //day code
 
             root.style.setProperty("--backgroundColor",`${backgroundColors.Day}`);
             root.style.setProperty("--overlayColor",`${overlayColors.Day}`);
             root.style.setProperty("--cityImage",`url(./resources/${cityImages.day})`);
+            console.log('day')
 
         }else if(dt>sys.sunset+3600){//night code
 
             root.style.setProperty("--backgroundColor",`${backgroundColors.night}`);
             root.style.setProperty("--overlayColor",`${overlayColors.night}`);
             root.style.setProperty("--cityImage",`url(./resources/${cityImages.night})`);
+            console.log('night')
 
         }
 
         //If statements to get background alternate states of weather that can affect city and background
         if (weather.id[1] == 3) { //check background drizzle
-            rainOrsnow="rain";
+            rainCloud.style.setProperty("display",`none`);
             velocity = 2;
+
         } else if ((weather.id[1] == 2)){ //check background thunder
-            backgroundDesc = "thunder";
-            rainOrsnow = "rain";
+            rainCloud.style.setProperty("--cloud",`${cloudType.thunder}`);
             velocity = 7;
         } else if(weather.id[1] == 5){//check background rain and atmosphere
-            backgroundDesc="rain";
-            rainOrsnow = "rain";
+            rainCloud.style.setProperty("--cloud",`${cloudType.rain}`);
             velocity = 6;
         }else if((weather.id[1] == 6)){//check background snow
-            backgroundDesc="snow";
-            rainOrsnow = "snow";
+            rainCloud.style.setProperty("--cloud",`${cloudType.snow}`);
             velocity = 3;
         }else if (weather.id[1] == 7){//check background fog
-            backgroundDesc="rain";
+            rainCloud.style.setProperty("display",`none`);
             cityType = `${cityType}-fog`;
         }else{
             isClear=true;
         }
 
-        //If statement to check to play rain or snowing animation
-        if (rainOrsnow != null){
-            if (rainOrsnow =="rain"){
-                if (weather.id[1] != 3){
-                    //add cloud svg top thunder or rain
-                    //change to appropriate colour
-
-                }
-                //play raining animation with velocity
-            }else{
-                //add cloud svg top snow
-            }
-        }
-
-        //Check cloud cover and wind speed
-        //do animation for that
-
+        
 
     })
     .catch(() => {

@@ -5,7 +5,7 @@
 
 
 #background-div{
-    
+    background-color: var(--backgroundColor);
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -23,9 +23,6 @@ body{
     border: 1px solid red;
     margin: 0;
     object-fit: cover;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
     background-image: url(./resources/Clear.svg);
     background-size: contain;
     background-repeat: no-repeat;
